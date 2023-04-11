@@ -29,6 +29,9 @@ const TextScreen = () => {
         onChangeText={(newValue) => setPassword(newValue)}
         secureTextEntry={true} //turn off password visibility
       />
+      {password.length < 5 ? (
+        <Text>Password must be longer than 5 characters</Text>
+      ) : null}
     </View>
   );
 };
