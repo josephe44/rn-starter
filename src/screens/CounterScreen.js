@@ -1,27 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
+const COUNTER_NUM = 1;
+
+// Reducer function
+const reducer = (state, action) => {
+  //  state === {counter: number}
+  // action === {type: 'increase' || 'decrease', payload: 1}
+
+  switch (action.type) {
+    case "increase":
+      return { ...state, counter: state.counter + action.payload };
+    case "decrease":
+      return { ...state, counter: state.counter - action.payload };
+    default:
+      return state;
+  }
+};
+
 const CounterScreen = () => {
-  const [counter, setCounter] = useState(0);
+  // using reducer
+  const [state, dispatch] = useReducer(reducer, { counter: 0 });
+  const { counter } = state;
 
-  const handleIncrease = () => {
-    setCounter(counter + 1);
-  };
+  // using useState
+  // const [counter, setCounter] = useState(0);
 
-  const handleDecrease = () => {
-    setCounter(counter - 1);
-  };
+  // const handleIncrease = () => {
+  //   setCounter(counter + 1);
+  // };
+
+  // const handleDecrease = () => {
+  //   setCounter(counter - 1);
+  // };
 
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>Current Count: {counter}</Text>
 
       <View style={styles.defaultButton}>
-        <Button title="Increase" onPress={() => handleIncrease()} />
+        <Button
+          title="Increase"
+          onPress={() => dispatch({ type: "increase", payload: COUNTER_NUM })}
+        />
       </View>
 
       <View style={styles.defaultButton}>
-        <Button title="Decrease" onPress={() => handleDecrease()} />
+        <Button
+          title="Decrease"
+          onPress={() =>
+            dispatch({ type: "increase", payload: -1 * COUNTER_NUM })
+          }
+        />
       </View>
     </View>
   );
