@@ -38,6 +38,10 @@ const HomeScreen = ({ navigation }) => {
           title="Go to Square Demo"
         />
       </View>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Text")}>
+        <Text style={styles.styleButton}>Go to Text Input Demo</Text>
+      </TouchableOpacity>
     </View>
   );
 };
