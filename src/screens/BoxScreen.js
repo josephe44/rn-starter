@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "black",
     height: 200,
-    // alignItems: "flex-end",
-    // flexDirection: "row", //default is column
+    alignItems: "flex-end",
+    flexDirection: "row", //default is column
     // justifyContent: "flex-start",
   },
   textOneStyle: {
@@ -30,7 +30,14 @@ const styles = StyleSheet.create({
     flex: 4,
     borderWidth: 3,
     borderColor: "red",
-    alignSelf: "flex-end",
+    // alignSelf: "flex-end",
+    position: "absolute",
+    // top: 0,
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
+    ...StyleSheet.absoluteFillObject, //this is a shortcut for the above 4 lines
+    fontSize: 18,
   },
   textThreeStyle: {
     flex: 2,
